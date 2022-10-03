@@ -14,7 +14,13 @@ builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.Requ
     .AddEntityFrameworkStores<ApplicationDbContext>();
 builder.Services.AddControllersWithViews();
 
+string tipo = builder.Configuration.GetSection("Position")["Title"];
+
+
+
 var app = builder.Build();
+
+Console.WriteLine(tipo);
 
 // Configure the HTTP request pipeline.
 if(app.Environment.IsDevelopment()) {
