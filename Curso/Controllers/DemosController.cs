@@ -1,16 +1,21 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using Curso.Models;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Curso.Controllers {
     public class DemosController : Controller {
         // GET: DemosController
         public ActionResult Index() {
+            var list = new List<Persona>();
+            list.Add(new Persona() { IdPersona = 1, Nombre = "Pepito", Apellidos = "Grillo", Edad = 99 });
+            list.Add(new Persona() { IdPersona = 2, Nombre = "Carmelo", Apellidos = "Coton<script>alert('codigo malicioso')</script>", Edad = 23 });
+            ViewData["Listado"] = list;
             return View();
         }
 
         // GET: DemosController/Details/5
         public ActionResult Details(int id) {
-            return View();
+            return View(new Persona() { IdPersona = 1, Nombre = "Pepito", Apellidos = "Grillo", Edad = 99 });
         }
 
         // GET: DemosController/Create
@@ -32,7 +37,7 @@ namespace Curso.Controllers {
 
         // GET: DemosController/Edit/5
         public ActionResult Edit(int id) {
-            return View();
+            return View(new Persona() { IdPersona = 1, Nombre = "Pepito", Apellidos = "Grillo", Edad = 99 });
         }
 
         // POST: DemosController/Edit/5

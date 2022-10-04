@@ -1,0 +1,29 @@
+﻿@{
+    var nombre = "<b>Mundo</b>";
+    int i = 0;
+}
+
+<h1>Hola @Html.Raw(nombre)</h1>
+<p>
+    Contador: @(i + 1) si pongo @i + 1
+    <br />
+    mi email es: kk@kk.com
+    <br />
+    mi nick: @@kk
+</p>
+@if(i == 0) {
+    <p class="error">Ningunos</p>
+} else {
+    <p>algunos @i</p>
+}
+<ul>
+    @for(var f=1; f <= 10; f++) {
+        <li>Elemento @f</li>
+    }
+</ul>
+<ul>
+    @foreach(var p in ViewBag.Listado) {
+        <li>@p.Apellidos, @p.Nombre</li>
+    }
+</ul>
+@Html.ActionLink("Inicio", "Privacy", "Home")
