@@ -1,5 +1,6 @@
 using Curso.Core;
 using Curso.Data;
+using Curso.Infraestructure.UoW;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc.DataAnnotations;
 using Microsoft.EntityFrameworkCore;
@@ -10,6 +11,8 @@ var builder = WebApplication.CreateBuilder(args);
 var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
     options.UseSqlServer(connectionString));
+builder.Services.AddDbContext<TiendaDBContext>(options =>
+    options.UseSqlServer(builder.Configuration.GetConnectionString("TiendaConnection")));
 builder.Services.AddDatabaseDeveloperPageExceptionFilter();
 
 builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
