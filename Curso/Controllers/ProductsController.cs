@@ -22,11 +22,12 @@ namespace Curso.Controllers {
             var tiendaDBContext = _context.Products.Include(p => p.ProductCategory).Include(p => p.ProductModel);
             return View(await tiendaDBContext.ToListAsync());
         }
-        public IActionResult Listado(int num=0, int rows=20) {
+        public IActionResult Listado(int num=0, int rows=15) {
             var tiendaDBContext = _context.Products.Skip(num * rows).Take(rows).Include(p => p.ProductCategory).Include(p => p.ProductModel);
             ViewBag.Paginas = (int)Math.Ceiling((decimal)_context.Products.Count() / rows);
             ViewBag.Pagina = num;
             ViewBag.Filas = rows;
+            this.Response.Headers.Add("x-curso", "ASP.NET");
 
             return View(tiendaDBContext.ToList());
         }

@@ -126,7 +126,7 @@
 <nav>
     <ul class="pagination">
         @for(var i = 0; i < ViewBag.Paginas; i++) {
-                <li class="page-item"><input type="button" class="page-link" value="@(i+1)"></li>
+            <li class="page-item"><a asp-action="Listado" asp-route-num="@i" asp-route-rows="@ViewBag.Filas" class="page-link">@(i + 1)</a></li>
         }
     </ul>
 </nav>

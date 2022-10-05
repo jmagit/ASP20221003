@@ -3,14 +3,21 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Curso.Controllers {
+    [Route("/ejemplos/del/curso")]
     public class DemosController : Controller {
         // GET: DemosController
+        [Route("")]
+        [Route("Index")]
         public ActionResult Index() {
             var list = new List<Persona>();
             list.Add(new Persona() { IdPersona = 1, Nombre = "Pepito", Apellidos = "Grillo", Edad = 99 });
             list.Add(new Persona() { IdPersona = 2, Nombre = "Carmelo", Apellidos = "Coton<script>alert('codigo malicioso')</script>", Edad = 23 });
             ViewData["Listado"] = list;
             return View();
+        }
+
+        public string Reports(int year, int mouth) {
+            return $"Informe {mouth}/{year}";
         }
 
         // GET: DemosController/Details/5
