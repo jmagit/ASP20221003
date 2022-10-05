@@ -10,7 +10,7 @@ namespace Core.Domains.Entities {
         public virtual IEnumerable<ValidationResult> Validate(ValidationContext validationContext) {
             return getValidationErrors();
         }
-        IEnumerable<ValidationResult> getValidationErrors() {
+        public IEnumerable<ValidationResult> getValidationErrors() {
             var validationResults = new List<ValidationResult>();
             var context = new ValidationContext(this, null, null);
             Validator.TryValidateObject(this,

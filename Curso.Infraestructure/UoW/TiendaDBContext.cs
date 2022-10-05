@@ -8,13 +8,13 @@ using Curso.Domains.Entities;
 
 namespace Curso.Infraestructure.UoW
 {
-    public partial class AdventureWorksLT2019Context : DbContext
+    public partial class TiendaDBContext : DbContext
     {
-        public AdventureWorksLT2019Context()
+        public TiendaDBContext()
         {
         }
 
-        public AdventureWorksLT2019Context(DbContextOptions<AdventureWorksLT2019Context> options)
+        public TiendaDBContext(DbContextOptions<TiendaDBContext> options)
             : base(options)
         {
         }

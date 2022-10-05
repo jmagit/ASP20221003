@@ -7,12 +7,12 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Curso.Domains.Contracts\Curso.Domains.Contracts.csproj" />
-    <ProjectReference Include="..\Curso.Domains.Entities\Curso.Domains.Entities.csproj" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="6.0.9" />
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="UoW\" />
+    <ProjectReference Include="..\Curso.Domains.Contracts\Curso.Domains.Contracts.csproj" />
+    <ProjectReference Include="..\Curso.Domains.Entities\Curso.Domains.Entities.csproj" />
   </ItemGroup>
 
 </Project>
