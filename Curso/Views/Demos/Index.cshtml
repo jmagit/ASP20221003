@@ -17,13 +17,24 @@
     <p>algunos @i</p>
 }
 <ul>
-    @for(var f=1; f <= 10; f++) {
-        <li>Elemento @f</li>
-    }
-</ul>
-<ul>
     @foreach(var p in ViewBag.Listado) {
         <li>@p.Apellidos, @p.Nombre</li>
     }
 </ul>
 @Html.ActionLink("Inicio", "Privacy", "Home")
+@section aside {
+    <ul>
+        @for(var f = 1; f <= 10; f++) {
+            <li>Elemento @f</li>
+        }
+    </ul>
+
+}
+    @section Scripts {
+    <script>
+        alert("Despues de jquery")
+    </script>
+    }
+    <script>
+        alert("Antes de jquery")
+    </script>
