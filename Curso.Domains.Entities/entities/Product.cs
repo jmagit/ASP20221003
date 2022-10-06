@@ -34,6 +34,7 @@ namespace Curso.Domains.Entities
         /// </summary>
         [Required]
         [StringLength(50)]
+        [Display(Name = "Producto")]
         public string Name { get; set; }
         /// <summary>
         /// Unique product identification number.
@@ -62,6 +63,7 @@ namespace Curso.Domains.Entities
         /// Product size.
         /// </summary>
         [StringLength(5)]
+        [DataType(DataType.Password)]
         public string Size { get; set; }
         /// <summary>
         /// Product weight.

@@ -16,8 +16,8 @@ builder.Services.AddDbContext<ApplicationDbContext>(options =>
 builder.Services.AddDbContext<TiendaDBContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("TiendaConnection")));
 
-builder.Services.AddTransient<IProductRepository, ProductRepository>();
-// builder.Services.AddTransient<IProductRepository, ProductRepositoryMock>();
+// builder.Services.AddTransient<IProductRepository, ProductRepository>();
+builder.Services.AddTransient<IProductRepository, ProductRepositoryMock>();
 builder.Services.AddTransient<IProductService, ProductoService>();
 
 builder.Services.AddDatabaseDeveloperPageExceptionFilter();

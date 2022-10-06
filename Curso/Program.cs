@@ -1,5 +1,9 @@
 using Curso.Core;
 using Curso.Data;
+using Curso.Domains.Contracts.Repositories;
+using Curso.Domains.Contracts.Services;
+using Curso.Domains.Services;
+using Curso.Infraestructure.Repositories;
 using Curso.Infraestructure.UoW;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc.DataAnnotations;
@@ -14,6 +18,10 @@ builder.Services.AddDbContext<ApplicationDbContext>(options =>
 builder.Services.AddDbContext<TiendaDBContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("TiendaConnection")));
 builder.Services.AddDatabaseDeveloperPageExceptionFilter();
+
+builder.Services.AddTransient<IProductRepository, ProductRepository>();
+// builder.Services.AddTransient<IProductRepository, ProductRepositoryMock>();
+builder.Services.AddTransient<IProductService, ProductoService>();
 
 builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
     .AddEntityFrameworkStores<ApplicationDbContext>();

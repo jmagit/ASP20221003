@@ -8,19 +8,25 @@ using Microsoft.EntityFrameworkCore;
 using Curso.Domains.Entities;
 using Curso.Infraestructure.UoW;
 using System.Drawing;
+using Curso.Domains.Contracts.Services;
 
 namespace Curso.Controllers {
     public class ProductsController : Controller {
         private readonly TiendaDBContext _context;
+        private readonly IProductService srv;
 
-        public ProductsController(TiendaDBContext context) {
+        public ProductsController(TiendaDBContext context, IProductService srv) {
             _context = context;
+            this.srv = srv;
         }
 
         // GET: Products
-        public async Task<IActionResult> Index() {
-            var tiendaDBContext = _context.Products.Include(p => p.ProductCategory).Include(p => p.ProductModel);
-            return View(await tiendaDBContext.ToListAsync());
+        //public async Task<IActionResult> Index() {
+        //    var tiendaDBContext = _context.Products.Include(p => p.ProductCategory).Include(p => p.ProductModel);
+        //    return View(await tiendaDBContext.ToListAsync());
+        //}
+        public IActionResult Index() {
+            return View(srv.GetAll());
         }
         public IActionResult Listado(int num=0, int rows=15) {
             var tiendaDBContext = _context.Products.Skip(num * rows).Take(rows).Include(p => p.ProductCategory).Include(p => p.ProductModel);
@@ -55,12 +61,12 @@ namespace Curso.Controllers {
                 return NotFound();
             }
 
-            var product = await _context.Products.FirstOrDefaultAsync(m => m.ProductId == id);
-            if(product == null || product.ThumbNailPhoto == null) {
+            var product = await _context.Products.Where(m => m.ProductId == id).Select(p => p.ThumbNailPhoto).FirstOrDefaultAsync();
+            if(product == null) {
                 return NotFound();
             }
 
-            return File(product.ThumbNailPhoto, "image/gif");
+            return File(product, "image/gif");
         }
         public async Task<IActionResult> Datos(int? id) {
             if(id == null || _context.Products == null) {
