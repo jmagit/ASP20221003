@@ -1,0 +1,85 @@
+﻿@model IEnumerable<Curso.Domains.Entities.Product>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ProductNumber)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+    <partial name="_tbody" />
+    </tbody>
+</table>
+<nav>
+    <ul class="pagination">
+        @for(var i = 1; i <= ViewBag.Paginas; i++) {
+            <li class="page-item"><input type="button" value="@i" class="page-link" /></li>
+        }
+    </ul>
+</nav>
+
+@section Scripts {
+    <script>
+        //const traePartial = function (num) {
+        //    fetch(`/Products/Fragmento?num=${num}&rows=@ViewBag.Filas`).then(
+        //        function (data) {
+        //            data.text().then(
+        //                function (listado) {
+        //                    $('tbody').html(listado)
+        //                }
+        //            )
+        //        }
+        //    )
+        //}
+
+        //$('.page-link').click(function (ev) {
+        //    traePartial(+ev.target.value - 1)
+        //})
+        const traePagina = function (num) {
+            fetch(`/Products/FragmentoJson?num=${num}&rows=@ViewBag.Filas`).then(
+                function (data) {
+                    data.json().then(
+                        function (listado) {
+                            var cad = ''
+                            for (var item of listado) {
+                                cad += `<tr>
+                                            <td>
+                                                <a href="/Products/Details/${item.productId}">${item.name}</a>
+                                            </td>
+                                            <td>
+                                                ${item.productNumber}
+                                            </td>
+                                            <td>
+                                                <a class="btn btn-primary" href="/Products/Edit/${item.productId}">Edit</a> |
+                                                <a class="btn btn-danger" href="/Products/Delete/${item.productId}">Delete</a>
+                                            </td>
+                                        </tr>`
+                            }
+                            $('tbody').html(cad)
+                        }
+                    )
+                }
+            )
+        }
+        $('.page-link').click(function (ev) {
+            traePagina(ev.target.value)
+        })
+    </script>
+
+    </script>
+}

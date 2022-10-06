@@ -38,6 +38,30 @@ namespace Curso.Controllers {
             return View(tiendaDBContext.ToList());
         }
 
+        public IActionResult Ajax(int num = 0, int rows = 15) {
+            var tiendaDBContext = _context.Products.Skip(num * rows).Take(rows).Include(p => p.ProductCategory).Include(p => p.ProductModel);
+            ViewBag.Paginas = (int)Math.Ceiling((decimal)_context.Products.Count() / rows);
+            ViewBag.Pagina = num;
+            ViewBag.Filas = rows;
+            this.Response.Headers.Add("x-curso", "ASP.NET");
+
+            return View(tiendaDBContext.ToList());
+        }
+
+        public IActionResult Fragmento(int num = 0, int rows = 15) {
+            var tiendaDBContext = _context.Products.Skip(num * rows).Take(rows).Include(p => p.ProductCategory).Include(p => p.ProductModel);
+
+            return PartialView("_tbody", tiendaDBContext.ToList());
+        }
+
+
+        public IActionResult FragmentoJson(int num = 0, int rows = 15) {
+            var tiendaDBContext = _context.Products.Skip(num * rows).Take(rows)
+                .Select(p => new { p.ProductId, p.ProductNumber, p.Name });
+
+            return Json(tiendaDBContext.ToList());
+        }
+
         // GET: Products/Details/5
         public async Task<IActionResult> Details(int? id) {
             if(id == null || _context.Products == null) {

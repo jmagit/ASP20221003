@@ -28,6 +28,8 @@ builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.Requ
 builder.Services.AddControllersWithViews();
 builder.Services.AddSingleton<IValidationAttributeAdapterProvider, CustomValidationAttributeAdapterProvider>();
 
+builder.Services.AddControllers().AddXmlSerializerFormatters();
+
 string tipo = builder.Configuration.GetSection("Position")["Title"];
 
 
@@ -53,29 +55,29 @@ app.UseRouting();
 app.UseAuthentication();
 app.UseAuthorization();
 
-// infomes/2000/1
+//// infomes/2000/1
 
-app.MapControllerRoute(
-    name: "informes",
-    pattern: "informes/{year:int:min(2000)}/{mouth:int:range(1,12)}",
-    defaults: new { controller = "Demos", action = "Reports" }
-    );
+//app.MapControllerRoute(
+//    name: "informes",
+//    pattern: "informes/{year:int:min(2000)}/{mouth:int:range(1,12)}",
+//    defaults: new { controller = "Demos", action = "Reports" }
+//    );
 
-// infomes/1999/14
-app.MapControllerRoute(
-    name: "informes2",
-    pattern: "informes/{year:int}/{mouth=1)}",
-    defaults: new { controller = "Demos", action = "Reports" }
-    );
+//// infomes/1999/14
+//app.MapControllerRoute(
+//    name: "informes2",
+//    pattern: "informes/{year:int}/{mouth=1)}",
+//    defaults: new { controller = "Demos", action = "Reports" }
+//    );
 
-// /Products/Edit/680/Bicicleta/Montaña
-app.MapControllerRoute(
-    name: "seo",
-    pattern: "{controller=Home}/{action=Index}/{id}/{**kk}");
+//// /Products/Edit/680/Bicicleta/Montaña
+//app.MapControllerRoute(
+//    name: "seo",
+//    pattern: "{controller=Home}/{action=Index}/{id}/{**kk}");
 
-app.MapControllerRoute(
-    name: "fotos",
-    pattern: "{controller=Home}/{action=Photo}/{id}.gif");
+//app.MapControllerRoute(
+//    name: "fotos",
+//    pattern: "{controller=Home}/{action=Photo}/{id}.gif");
 app.MapControllerRoute(
     name: "default",
     pattern: "{controller=Home}/{action=Index}/{id?}");
