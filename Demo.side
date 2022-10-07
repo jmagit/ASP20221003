@@ -1,0 +1,182 @@
+{
+  "id": "b4b9b16f-631d-4b08-9062-daf2e56c019c",
+  "version": "2.0",
+  "name": "Demo",
+  "url": "https://localhost:7157",
+  "tests": [{
+    "id": "abb4bbe4-431c-4378-ab03-c0fd9f34518a",
+    "name": "Login",
+    "commands": [{
+      "id": "041bc0f6-cb61-4877-ae21-aecca7782716",
+      "comment": "",
+      "command": "open",
+      "target": "/",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "0be0c032-3785-4194-874e-87df08cb9d3b",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "1517x815",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "7c1b0fce-b41d-4a6e-932b-7ecf7a945eb2",
+      "comment": "",
+      "command": "click",
+      "target": "css=.display-4",
+      "targets": [
+        ["css=.display-4", "css:finder"],
+        ["xpath=//h1[2]", "xpath:position"],
+        ["xpath=//h1[contains(.,'Welcome')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "db2fd022-3d8d-4b7e-9fc4-2801c475dbd0",
+      "comment": "",
+      "command": "assertText",
+      "target": "css=.display-4",
+      "targets": [
+        ["css=.display-4", "css:finder"],
+        ["xpath=//h1[2]", "xpath:position"],
+        ["xpath=//h1[contains(.,'Welcome')]", "xpath:innerText"]
+      ],
+      "value": "Welcome"
+    }, {
+      "id": "a577348c-ca67-4d25-ae01-d31846af05a6",
+      "comment": "",
+      "command": "click",
+      "target": "linkText=Privacy",
+      "targets": [
+        ["linkText=Privacy", "linkText"],
+        ["css=.flex-grow-1 > .nav-item:nth-child(2) > .nav-link", "css:finder"],
+        ["xpath=//a[contains(text(),'Privacy')]", "xpath:link"],
+        ["xpath=//a[contains(@href, '/Home/Privacy')]", "xpath:href"],
+        ["xpath=//li[2]/a", "xpath:position"],
+        ["xpath=//a[contains(.,'Privacy')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "bc836e1a-0d1e-4f5d-96b1-cd036fd9050a",
+      "comment": "",
+      "command": "verifyText",
+      "target": "css=h1",
+      "targets": [
+        ["css=h1", "css:finder"],
+        ["xpath=//h1", "xpath:position"],
+        ["xpath=//h1[contains(.,'Privacy Policy')]", "xpath:innerText"]
+      ],
+      "value": "Privacy Policy"
+    }, {
+      "id": "b658f43f-8d3c-44c8-812f-c020be607345",
+      "comment": "",
+      "command": "click",
+      "target": "linkText=Login",
+      "targets": [
+        ["linkText=Login", "linkText"],
+        ["css=.navbar-nav:nth-child(2) > .nav-item:nth-child(2) > .nav-link", "css:finder"],
+        ["xpath=//a[contains(text(),'Login')]", "xpath:link"],
+        ["xpath=//a[contains(@href, '/Identity/Account/Login')]", "xpath:href"],
+        ["xpath=//ul[2]/li[2]/a", "xpath:position"],
+        ["xpath=//a[contains(.,'Login')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "99c84b36-c146-4673-b1c0-0c283fd9e51f",
+      "comment": "",
+      "command": "assertText",
+      "target": "css=h1",
+      "targets": [
+        ["css=h1", "css:finder"],
+        ["xpath=//h1", "xpath:position"],
+        ["xpath=//h1[contains(.,'Log in')]", "xpath:innerText"]
+      ],
+      "value": "Log in"
+    }, {
+      "id": "4c7c9061-dc98-4352-b54d-17dc475b1d21",
+      "comment": "",
+      "command": "click",
+      "target": "id=Input_Email",
+      "targets": [
+        ["id=Input_Email", "id"],
+        ["name=Input.Email", "name"],
+        ["css=#Input_Email", "css:finder"],
+        ["xpath=//input[@id='Input_Email']", "xpath:attributes"],
+        ["xpath=//form[@id='account']/div/input", "xpath:idRelative"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "6fc28550-c04e-4f47-a7ac-6d2cb582458f",
+      "comment": "",
+      "command": "type",
+      "target": "id=Input_Email",
+      "targets": [
+        ["id=Input_Email", "id"],
+        ["name=Input.Email", "name"],
+        ["css=#Input_Email", "css:finder"],
+        ["xpath=//input[@id='Input_Email']", "xpath:attributes"],
+        ["xpath=//form[@id='account']/div/input", "xpath:idRelative"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": "kk@kk"
+    }, {
+      "id": "f1de2db5-adb5-4cbf-9a13-190f02bd22ac",
+      "comment": "",
+      "command": "type",
+      "target": "id=Input_Password",
+      "targets": [
+        ["id=Input_Password", "id"],
+        ["name=Input.Password", "name"],
+        ["css=#Input_Password", "css:finder"],
+        ["xpath=//input[@id='Input_Password']", "xpath:attributes"],
+        ["xpath=//form[@id='account']/div[2]/input", "xpath:idRelative"],
+        ["xpath=//div[2]/input", "xpath:position"]
+      ],
+      "value": "P@$$w0rd"
+    }, {
+      "id": "f7cac1c8-1808-4a48-a200-1de39bba7210",
+      "comment": "",
+      "command": "click",
+      "target": "id=login-submit",
+      "targets": [
+        ["id=login-submit", "id"],
+        ["css=#login-submit", "css:finder"],
+        ["xpath=//button[@id='login-submit']", "xpath:attributes"],
+        ["xpath=//form[@id='account']/div[4]/button", "xpath:idRelative"],
+        ["xpath=//div[4]/button", "xpath:position"],
+        ["xpath=//button[contains(.,'Log in')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "3bb1ede8-a94c-4e37-a510-e66e8c98c549",
+      "comment": "",
+      "command": "assertTitle",
+      "target": "Home Page - Curso",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "9a167d37-fb74-4d44-b27a-8f1cf565f22e",
+      "comment": "",
+      "command": "click",
+      "target": "css=.btn",
+      "targets": [
+        ["css=.btn", "css:finder"],
+        ["xpath=//button[@type='submit']", "xpath:attributes"],
+        ["xpath=//form/button", "xpath:position"],
+        ["xpath=//button[contains(.,'Logout')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }]
+  }],
+  "suites": [{
+    "id": "d49a54f3-7c61-46b2-8cf5-e410ae21af21",
+    "name": "Default Suite",
+    "persistSession": false,
+    "parallel": false,
+    "timeout": 300,
+    "tests": ["abb4bbe4-431c-4378-ab03-c0fd9f34518a"]
+  }],
+  "urls": ["https://localhost:7157/"],
+  "plugins": []
+}

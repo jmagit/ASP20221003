@@ -25,6 +25,7 @@ namespace Core.Validators.Tests {
         [DataRow("12345678")]
         [DataRow("Z12345678")]
         [DataRow("4g")]
+        [DataRow("")]
         [DataRow(null)]
         public void IsNIFKOTest(string nif) {
             Assert.IsFalse(nif.IsNIF());
