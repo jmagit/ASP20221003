@@ -4,8 +4,8 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using Core.DataAnnotations;
 using Core.Domains.Entities;
-using Core.Validators;
 using Microsoft.EntityFrameworkCore;
 
 namespace Curso.Domains.Entities

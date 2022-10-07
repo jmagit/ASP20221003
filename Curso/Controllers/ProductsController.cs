@@ -9,8 +9,10 @@ using Curso.Domains.Entities;
 using Curso.Infraestructure.UoW;
 using System.Drawing;
 using Curso.Domains.Contracts.Services;
+using Microsoft.AspNetCore.Authorization;
 
 namespace Curso.Controllers {
+    [Authorize]
     public class ProductsController : Controller {
         private readonly TiendaDBContext _context;
         private readonly IProductService srv;
@@ -63,6 +65,7 @@ namespace Curso.Controllers {
         }
 
         // GET: Products/Details/5
+        [Authorize(Roles = "User")]
         public async Task<IActionResult> Details(int? id) {
             if(id == null || _context.Products == null) {
                 // this.StatusCode(404)
@@ -107,6 +110,7 @@ namespace Curso.Controllers {
         }
 
         // GET: Products/Create
+        [Authorize(Policy = "RequireAdministratorRole")]
         public IActionResult Create() {
             ViewData["ProductCategoryId"] = new SelectList(_context.ProductCategories, "ProductCategoryId", "Name");
             ViewBag.ProductModelId = new SelectList(_context.ProductModels, "ProductModelId", "Name");

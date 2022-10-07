@@ -77,9 +77,8 @@
             )
         }
         $('.page-link').click(function (ev) {
-            traePagina(ev.target.value)
+            traePagina(+ev.target.value - 1)
         })
-    </script>
-
+        traePagina(@ViewBag.Pagina)
     </script>
 }

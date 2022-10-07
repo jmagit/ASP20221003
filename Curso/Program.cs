@@ -24,7 +24,14 @@ builder.Services.AddTransient<IProductRepository, ProductRepository>();
 builder.Services.AddTransient<IProductService, ProductoService>();
 
 builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
+    .AddRoles<IdentityRole>()
     .AddEntityFrameworkStores<ApplicationDbContext>();
+builder.Services.AddAuthorization(options => {
+ options.AddPolicy("RequireAdministratorRole",
+         policy => policy.RequireRole("Admin"));
+});
+
+
 builder.Services.AddControllersWithViews();
 builder.Services.AddSingleton<IValidationAttributeAdapterProvider, CustomValidationAttributeAdapterProvider>();
 
@@ -70,7 +77,7 @@ app.UseAuthorization();
 //    defaults: new { controller = "Demos", action = "Reports" }
 //    );
 
-//// /Products/Edit/680/Bicicleta/Montaña
+//// /Products/Edit/680/Bicicleta/Montaï¿½a
 //app.MapControllerRoute(
 //    name: "seo",
 //    pattern: "{controller=Home}/{action=Index}/{id}/{**kk}");
